@@ -1,0 +1,8 @@
+.element {
+    height: 30vh;
+    width: 2.5vw;
+    margin-left: 10px;
+    margin-right: 10px;
+    background-color: black;
+    transition-duration: 0.1s;
+}
