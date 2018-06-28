@@ -1,18 +1,29 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
+import Visualizer from './components/Visualizer';
 
 class App extends Component {
+  constructor() {
+    super();
+    this.state = {
+      currentList :[3, 4, 5, 6, 7, 8, 9, 2, 4, 6]
+    }
+
+    this.rotateList = this.rotateList.bind(this);
+  }
+
+  rotateList() {
+    var lst = this.state.currentList;
+    var finalLst = lst.slice(1)
+    finalLst.push(lst[0]);
+    this.setState({currentList: finalLst})
+  }
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.jsx</code> and save to reload.
-        </p>
+        <Visualizer list={this.state.currentList}/>
+        <button onClick={this.rotateList}>Next</button>
       </div>
     );
   }
