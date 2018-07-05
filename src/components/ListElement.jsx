@@ -5,7 +5,7 @@ class ListElement extends Component {
   render() {
     return (
       <div className="element" style={{height: `${this.props.n * this.props.i}%`}}>
-          { this.props.i }
+          
       </div>
     );
   }

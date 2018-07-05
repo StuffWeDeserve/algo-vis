@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Visualizer from './components/Visualizer';
 import CodeMirror from 'react-codemirror';
+import Generator from './lib/generator'
 
 import './App.css';
 import 'codemirror/lib/codemirror.css';
@@ -8,7 +9,8 @@ import 'codemirror/mode/javascript/javascript';
 
 // Default code added into the code mirror plugin
 const DEFAULT_CODE = "function visualizer(lst) \n{\n // "
-  + "Start typing here, do not delete the function declaration \n}"
+  + "Start typing here, do not delete the function declaration \n}";
+const INITIAL_LIST = [[1,2,3,4]];
 
 // list of lists used for testing
 var lstOflsts = [
@@ -23,11 +25,17 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      lst : lstOflsts,
-      curr : 0
+      lst : INITIAL_LIST,
+      curr : 0,
+      value: DEFAULT_CODE
     }
 
+    this.evaluateCode = this.evaluateCode.bind(this);
     this.getNextItem = this.getNextItem.bind(this);
+  }
+
+  evaluateCode() {
+    this.setState({lst: Generator.generateNList(INITIAL_LIST[0], this.state.value, "visualizer")});
   }
 
   getNextItem() {
@@ -48,8 +56,9 @@ class App extends Component {
     return (
       <div className="App">
         <Visualizer list={this.state.lst[this.state.curr]}/>
-        <button onClick={this.getNextItem}>Run</button>
-        <CodeMirror defaultValue={DEFAULT_CODE} options={options}/>
+        <button onClick={this.evaluateCode}>Run</button>
+        <button onClick={this.getNextItem}>Next</button>
+        <CodeMirror ref="codeEditor" defaultValue={DEFAULT_CODE} options={options} onChange={(event)=> {this.setState({value:event});}}/>
       </div>
     );
   }
