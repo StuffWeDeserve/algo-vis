@@ -4,7 +4,7 @@ var generator = (function(){
     var module = {};
     
     module.generateNList = function (array, code, injector){
-        var result = [];
+        var result = [array.slice(0)];
 
         let handler = {
             get: function(target, property) {
@@ -12,15 +12,24 @@ var generator = (function(){
             },
             set: function(target, key, value){
                 target[key] = value;
-                result.push(target.slice(0));
+                console.log(parseInt(key));
+                if (key != "length") result.push(target.slice(0));
                 return true;
+            },
+            deleteProperty: function(target, property) {
+                var res = delete target[property];
+                result.push(target.slice(0));
+                return res;
             }
         };
         
         var arrayProxy = new Proxy(array, handler);
         eval(code + injector+"(arrayProxy);");
-        return result;
+
+        return result.slice(0);
     }
     
     return module;
 })();
+
+export default generator;
