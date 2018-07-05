@@ -2,11 +2,17 @@ import React, { Component } from 'react';
 import "./ListElement.css"
 
 class ListElement extends Component {
+  
   render() {
     return (
-      <div className="element" style={{height: `${this.props.n * this.props.i}%`}}>
-          
+      <div>
+        <div className="list-container">
+          <div className="list-element" style={{height: `${(this.props.i / this.props.n) * 100}%`}} />
+        </div>
+        <div className="list-element-label">{this.props.i}</div>
       </div>
+
+
     );
   }
 }

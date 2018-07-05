@@ -1,8 +1,18 @@
-.element {
-    height: 30vh;
+.list-element {
     width: 2.5vw;
     margin-left: 10px;
     margin-right: 10px;
     background-color: black;
     transition-duration: 0.1s;
+}
+
+.list-container {
+    height: 30vh;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.list-element-label {
+    text-align: center;
+    font-size: 0.8em;
 }

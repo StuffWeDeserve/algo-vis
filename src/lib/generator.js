@@ -1,10 +1,10 @@
 var generator = (function(){
-    "use strict";
-    
     var module = {};
     
     module.generateNList = function (array, code, injector){
-        var result = [array.slice(0)];
+        // Makes sure the passed array is not mutated
+        array = array.slice(0);
+        let result = [array.slice(0)];
 
         let handler = {
             get: function(target, property) {
@@ -12,19 +12,26 @@ var generator = (function(){
             },
             set: function(target, key, value){
                 target[key] = value;
-                console.log(parseInt(key));
-                if (key != "length") result.push(target.slice(0));
+                if (key !== "length") result.push(target.slice(0));
                 return true;
             },
             deleteProperty: function(target, property) {
-                var res = delete target[property];
-                result.push(target.slice(0));
+                let res = delete target[property];
+                
+                // I'm just gonna set the length here for the slice that is being pushed
+                // if there is a better alternative we can implement that later
+                let array = target.slice(0);
+                array["length"] = array.length ? array.length - 1 : 0;
+
+                result.push(array);
                 return res;
             }
         };
+        // eslint-disable-next-line
+        let arrayProxy = new Proxy(array, handler);
         
-        var arrayProxy = new Proxy(array, handler);
-        eval(code + injector+"(arrayProxy);");
+        // eslint-disable-next-line
+        eval(code + ";" + injector+"(arrayProxy);");
 
         return result.slice(0);
     }
