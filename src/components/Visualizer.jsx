@@ -7,12 +7,12 @@ class Visualizer extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      max : Math.max(...this.props.list)
+      max : this.props.max
     }
   }
 
   componentWillReceiveProps(nextProps) {
-    let newMax = Math.max(...nextProps.list);
+    let newMax = this.props.max;
     // You don't have to do this check first, but it can help prevent an unneeded render
     if (newMax !== this.state.max) {
       this.setState({ max: newMax });

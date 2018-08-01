@@ -58,7 +58,7 @@ class App extends Component {
   }
 
   updateListSize() {
-    var lst = [...Array(this.state.size).keys()].slice(1);
+    var lst = [...Array(this.state.size + 1).keys()].slice(1);
     this.setState({lst:[lst], curr:0});
   }
 
@@ -82,7 +82,7 @@ class App extends Component {
           <button onClick={this.listRandomizer}>Randomizer</button>
         </span>
         
-        <Visualizer list={lst[curr]}/>
+        <Visualizer list={lst[curr]} max={this.state.size}/>
 
         <button onClick={this.evaluateCode}>Run</button>
 
