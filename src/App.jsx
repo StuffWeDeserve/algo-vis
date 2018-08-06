@@ -1,18 +1,21 @@
 import React, { Component } from 'react';
 import Visualizer from './components/Visualizer';
 import CodeMirror from 'react-codemirror';
-import Generator from './lib/generator'
+import Generator from './lib/generator';
+import shortid from 'shortid';
 
-import arrayShuffle from "./lib/utils"
+import arrayShuffle from "./lib/utils";
 
 import './App.css';
 import 'codemirror/lib/codemirror.css';
 import 'codemirror/mode/javascript/javascript';
 
 // slider
-import Slider from 'react-rangeslider'
-import 'react-rangeslider/lib/index.css'
+import Slider from 'react-rangeslider';
+import 'react-rangeslider/lib/index.css';
 
+// materialize
+import {Button, Icon, Card, Collection, CollectionItem} from 'react-materialize';
 
 var arr = [1,2,3,4,5,6,7,8,9,10];
 arrayShuffle(arr);
@@ -31,13 +34,15 @@ class App extends Component {
       lst : [INITIAL_LIST],
       curr : 0,
       value: DEFAULT_CODE,
-      size : INITIAL_LIST.length
+      size : INITIAL_LIST.length,
+      visActive: false
     }
 
     this.evaluateCode = this.evaluateCode.bind(this);
     this.updateListSize = this.updateListSize.bind(this);
     this.handleSizeChange = this.handleSizeChange.bind(this);
     this.listRandomizer = this.listRandomizer.bind(this);
+    this.hideVis = this.hideVis.bind(this);
   }
 
   listRandomizer() {
@@ -54,7 +59,7 @@ class App extends Component {
 
   evaluateCode() {
     this.setState((prevState) => 
-      {return {curr: 0, lst: Generator.generateNList(prevState.lst[0], prevState.value, FUNCTION_NAME)}});
+      {return {curr: 0, lst: Generator.generateNList(prevState.lst[0], prevState.value, FUNCTION_NAME), visActive: true}});
   }
 
   updateListSize() {
@@ -62,41 +67,86 @@ class App extends Component {
     this.setState({lst:[lst], curr:0});
   }
 
+  hideVis() {
+    this.setState({visActive:false});
+  }
+
   render() {
     // the parameters for the codemirror
     var options = {
       lineNumbers: true,
-      mode: 'javascript'
+      mode: 'javascript',
+      style: {"height":"80%"}
     };
 
     const { lst, curr } = this.state
-    
-    return (
-      <div className="App">
-        <span>
-        <label>
-            List Elements:
-            <input type="number" id="height" name="height" min="0" max="100" value={this.state.size} placeholder="10" onChange={this.handleSizeChange} />
-          </label>
-          <button onClick={this.updateListSize}>Run</button>
-          <button onClick={this.listRandomizer}>Randomizer</button>
-        </span>
-        
+
+    var visualizer = (
+      <div className="visualizer">
         <Visualizer list={lst[curr]} max={this.state.size}/>
 
-        <button onClick={this.evaluateCode}>Run</button>
-
-        <Slider
+        {/* <Slider
           className="slider"
           min={0}
           max={lst.length - 1}
           value={curr}
           onChange={(value) => {this.setState({curr: value})}}
-        /> 
-
+        />  */}
+        <div className="range-field slider">
+          <input type="range" min={0} max={lst.length - 1} value={curr} onChange={(event) => {this.setState({curr: event.target.value})}}/>
+        </div>
+        <Button className="blue darken-5" waves='light' onClick={this.hideVis}>
+          Close
+        </Button>
+      </div>
+    );
+    
+    return (
+      <div className="App">
+        <Card className="appConfig white">
+          <label>
+            List Elements:
+            <input type="number" id="height" name="height" min="0" max="100" value={this.state.size} placeholder="10" onChange={this.handleSizeChange} />
+          </label>
+          {/* <button onClick={this.updateListSize}>Run</button>
+          <button onClick={this.listRandomizer}>Randomizer</button> */}
+          <div className="btnContainer">
+            <Button className="blue darken-5" waves='light' onClick={this.updateListSize}>
+              Load
+            </Button>
+            <Button className="blue darken-5" waves='light' onClick={this.listRandomizer}>
+              Randomize
+            </Button>
+          </div>
+          
+          <div className="listValues">[{lst[0].map((elem) => <span className="listValuesItem" key={shortid.generate()}>{elem}</span>)}]</div>        
+        </Card>
+        
         <CodeMirror defaultValue={DEFAULT_CODE} options={options} 
           onChange={(event) => {this.setState({value:event})}}
+          className="codeEditor"
         />
+
+        <Button className="blue darken-5" waves='light' onClick={this.evaluateCode}>
+          Run
+        </Button>
+        {this.state.visActive ? visualizer: null}
+
+        <div className="sideBarContainer">
+            <div className="sideBar">
+                <div className="appConfigInfo">
+                  <div className="infoItem">
+                    Configure the list size and randomize the list elements
+                  </div>
+                </div>
+                <div className="codeEditorInfo">
+                  <div className="infoItem">
+                    Perform some list manipulations
+                  </div>
+                </div>
+                                
+            </div>
+        </div>
       </div>
     );
   }

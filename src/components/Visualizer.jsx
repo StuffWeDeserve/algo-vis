@@ -3,6 +3,9 @@ import "./Visualizer.css"
 import ListElement from './ListElement';
 import shortid from 'shortid';
 
+import Slider from 'react-rangeslider'
+import 'react-rangeslider/lib/index.css'
+
 class Visualizer extends Component {
   constructor(props) {
     super(props);
@@ -26,7 +29,7 @@ class Visualizer extends Component {
     return (
       // this is not the right this
       <div className="vis">
-        {this.props.list.map((elem, i) => <ListElement key={shortid.generate()} i={elem} n={max}/>)}
+        {this.props.list.map((elem, i) => <ListElement key={shortid.generate()} i={elem} n={max}/>)} 
       </div>
     );
   }
