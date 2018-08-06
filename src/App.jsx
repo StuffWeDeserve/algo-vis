@@ -14,9 +14,8 @@ import 'codemirror/mode/javascript/javascript';
 import Slider from 'react-rangeslider';
 import 'react-rangeslider/lib/index.css';
 
-//materialize
-import {Button, Icon, Card} from 'react-materialize';
-
+// materialize
+import {Button, Icon, Card, Collection, CollectionItem} from 'react-materialize';
 
 var arr = [1,2,3,4,5,6,7,8,9,10];
 arrayShuffle(arr);
@@ -132,6 +131,21 @@ class App extends Component {
           Run
         </Button>
         {this.state.visActive ? visualizer: null}
+
+        <div className="sideBarContainer">
+            <div className="sideBar">
+                <div className="sideBarImg logo">LOGO</div>
+                <Collection className="sideBarItems">
+                    <CollectionItem href="https://github.com/kalindudc">
+                        Kalindu De Costa 
+                    </CollectionItem>
+                    <CollectionItem href="https://github.com/sakshaat">
+                        Sakshaat Choyikandi
+                    </CollectionItem>
+                </Collection>
+                
+            </div>
+        </div>
       </div>
     );
   }
