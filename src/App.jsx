@@ -134,16 +134,17 @@ class App extends Component {
 
         <div className="sideBarContainer">
             <div className="sideBar">
-                <div className="sideBarImg logo">LOGO</div>
-                <Collection className="sideBarItems">
-                    <CollectionItem href="https://github.com/kalindudc">
-                        Kalindu De Costa 
-                    </CollectionItem>
-                    <CollectionItem href="https://github.com/sakshaat">
-                        Sakshaat Choyikandi
-                    </CollectionItem>
-                </Collection>
-                
+                <div className="appConfigInfo">
+                  <div className="infoItem">
+                    Configure the list size and randomize the list elements
+                  </div>
+                </div>
+                <div className="codeEditorInfo">
+                  <div className="infoItem">
+                    Perform some list manipulations
+                  </div>
+                </div>
+                                
             </div>
         </div>
       </div>

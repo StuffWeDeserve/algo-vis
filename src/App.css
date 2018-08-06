@@ -106,14 +106,11 @@
     z-index: 1;
     width: 250px;
     height: 100%;
-    background: white;
+    background: none;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
-    -webkit-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
-    -moz-box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
-    box-shadow: 2px 0px 5px 0px rgba(0,0,0,0.75);
 }
 
 .sideBarImg {
@@ -123,13 +120,31 @@
     
 }
 
-.logo {
-    background: #fff;
-    background-size: 80% 80%;
-    background-position: center;
-    background-repeat: no-repeat;
+.appConfigInfo {
+    width: 100%;
+    height: 41%;
+    padding: 10px;
+    margin-bottom: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
 }
 
-.sideBarItems {
-    width: 100% ;
+.codeEditorInfo {
+    width: 100%;
+    height: 50%;
+    padding: 10px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.infoItem {
+    width: 100%;
+    height: auto;
+    font-size: 16pt;
+    text-align: center;
+    color: #c70039;
 }
