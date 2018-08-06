@@ -10,6 +10,8 @@
     height: 30vh;
     display: flex;
     flex-direction: column-reverse;
+    overflow: hidden;
+    overflow-x: auto;
 }
 
 .list-element-label {
