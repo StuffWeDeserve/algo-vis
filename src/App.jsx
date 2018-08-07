@@ -120,8 +120,7 @@ class App extends Component {
           <div className="instructions">
             <h4>Enter code and run the visualizer</h4>
           </div>
-
-          {codeMirror} 
+          {codeMirror}
           <Button className="run-button btn-large blue" waves='light' onClick={this.evaluateCode}>Run Code</Button>
         </div>
       </div>
