@@ -13,13 +13,26 @@
     flex-direction: column;
     align-items: center;
     width: 100%;
-    background-color: $yellow;
+    background-color: $primary-color;
 
     .instructions {
         width: 100%;
-        color: $red;
+        color: $tertiary-color;
     }
 }
+
+.header .brand-logo {
+    color: $light-text-color !important;
+    padding-left: 10px;
+    font-weight: 400;
+}
+
+.run-button {
+    width: 20vw;
+    color: $light-text-color;
+}
+
+
 
 .section {
     padding: 10px;
@@ -32,11 +45,11 @@
     flex-direction: column;
     align-items: center; 
     width: 100%;
-    background-color: $red;
+    background-color: $tertiary-color;
 
     .instructions {
         width: 100%;
-        color: $yellow;
+        color: $primary-color;
     }
 }
 
@@ -80,6 +93,7 @@
 
 .CodeMirror {
     height: 70vh !important;
+    box-shadow: 1px 1px 2px rgb(34, 34, 34);
 }
 
 .header {

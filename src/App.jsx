@@ -20,6 +20,7 @@ arrayShuffle(arr);
 
 const INITIAL_LIST = arr;
 const FUNCTION_NAME = "visualizer";
+const REPO_NAME = "Algo-Vis"
 
 // Default code added into the code mirror plugin
 const DEFAULT_CODE = `function ${FUNCTION_NAME}(lst) \n{\n  //`
@@ -114,20 +115,16 @@ class App extends Component {
           </div>
 
           {codeMirror}
-          <Button className="blue darken-5" waves='light' onClick={this.evaluateCode}> Run </Button>
+          <Button className="run-button btn-large blue" waves='light' onClick={this.evaluateCode}>Run Code</Button>
         </div>
       </div>
     );
 
     return (
       <div className="section-container">
-        <Navbar brand='' className='header teal lighten-2' left>
-          <NavItem className='header-item black-text text-darken-2' right>Stuff We Deserve</NavItem>
-        </Navbar>
-
+        <Navbar brand={REPO_NAME} className='header blue-grey darken-4' right />
         {this.state.visActive ? visualizer: sections}
-        
-        <Footer className="footer blue darken-5" copyrights="© Copyright 2018 StuffWeDeserve"> </Footer>
+        <Footer className="footer blue-grey darken-4" copyrights="© Copyright 2018 StuffWeDeserve"> </Footer>
       </div>
 
     );
