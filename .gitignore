@@ -84,3 +84,6 @@ yarn-error.log*
 
 # IDE
 *.vscode
+
+# .json files
+package-lock.json

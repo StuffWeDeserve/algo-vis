@@ -12,7 +12,7 @@ import 'codemirror/mode/javascript/javascript';
 import 'react-rangeslider/lib/index.css';
 
 // materialize
-import {Footer, Button, Icon, Navbar, NavItem, Toast} from 'react-materialize';
+import {Footer, Button, Icon, Navbar, NavItem, Toast, Dropdown} from 'react-materialize';
 import ListConfig from './components/ListConfig';
 
 var arr = [1,2,3,4,5,6,7,8,9,10];
@@ -25,6 +25,9 @@ const REPO_NAME = "Algo-Vis"
 // Default code added into the code mirror plugin
 const DEFAULT_CODE = `function ${FUNCTION_NAME}(lst) \n{\n  //`
   + "Start typing here, do not delete the function declaration \n}";
+
+const ALGO_LIST_REVERSE = `function ${FUNCTION_NAME}(lst) \n{\n  `
++ "lst.reverse(); \n}";
 
 class App extends Component {
   constructor() {
@@ -86,7 +89,7 @@ class App extends Component {
       height: '70%'
     };
 
-    var codeMirror = (<CodeMirror className="code-mirror" style={{"height":"300px"}} defaultValue={DEFAULT_CODE} options={options} 
+    var codeMirror = (<CodeMirror className="code-mirror" style={{"height":"300px"}} defaultValue={this.state.value} options={options} 
     onChange={(event) => {this.setState({value:event})}} />);
 
     const { lst, curr } = this.state
@@ -116,10 +119,15 @@ class App extends Component {
               listRandomizer={this.listRandomizer} />
         </div>
 
-        <div className="section code-editor">
+        <div className="section code-editor" id="section-code-editor">
           <div className="instructions">
             <h4>Enter code and run the visualizer</h4>
           </div>
+          <Dropdown trigger={
+              <Button className="btn-large blue">Test Algorithms<Icon right>arrow_drop_down</Icon></Button>
+            }>
+            <NavItem href="#section-code-editor" onClick={(event) => {this.setState({value:ALGO_LIST_REVERSE})}}>List reverse</NavItem>
+          </Dropdown>
           {codeMirror}
           <Button className="run-button btn-large blue" waves='light' onClick={this.evaluateCode}>Run Code</Button>
         </div>
