@@ -12,7 +12,7 @@ import 'codemirror/mode/javascript/javascript';
 import 'react-rangeslider/lib/index.css';
 
 // materialize
-import {Footer, Button, Icon, Navbar, NavItem} from 'react-materialize';
+import {Footer, Button, Icon, Navbar, NavItem, Toast} from 'react-materialize';
 import ListConfig from './components/ListConfig';
 
 var arr = [1,2,3,4,5,6,7,8,9,10];
@@ -57,8 +57,15 @@ class App extends Component {
   }
 
   evaluateCode() {
-    this.setState((prevState) => 
-      {return {curr: 0, lst: Generator.generateNList(prevState.lst[0], prevState.value, FUNCTION_NAME), visActive: true}});
+    var genList =[this.state.lst[0]];
+    try {
+      genList = Generator.generateNList(this.state.lst[0], this.state.value, FUNCTION_NAME);
+      this.setState((prevState) => 
+      {return {curr: 0, lst: genList, visActive: true}});
+    }
+    catch (err) {
+      window.Materialize.toast('The code does not compile: ' + err, 3000);
+    }
   }
 
   updateListSize() {
@@ -114,7 +121,7 @@ class App extends Component {
             <h4>Enter code and run the visualizer</h4>
           </div>
 
-          {codeMirror}
+          {codeMirror} 
           <Button className="run-button btn-large blue" waves='light' onClick={this.evaluateCode}>Run Code</Button>
         </div>
       </div>
