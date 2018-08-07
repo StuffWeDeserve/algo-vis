@@ -1,0 +1,66 @@
+@import "colors.scss"; 
+
+.App {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: $yellow;
+
+    .instructions {
+        width: 100%;
+        color: $red;
+        padding: 1%;
+    }
+}
+
+.section {
+    min-height: 100vh;
+}
+
+.code-editor {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+    background-color: $red;
+
+    .instructions {
+        width: 100%;
+        color: $yellow;
+        padding: 1%;
+    }
+}
+
+
+
+
+
+.slider {
+    width: 25% !important;
+    height:auto !important;
+}
+
+.visualizer {
+    transition: visibility 0s, opacity 0.5s linear;
+    position: absolute;
+    z-index: 11;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.857);
+}
+
+.footer {
+    width: 100%;
+}
