@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react": "^16.4.1",
+    "react": "^16.4.2",
     "react-codemirror": "^1.0.0",
     "react-dom": "^16.4.1",
     "react-materialize": "^2.3.3",
@@ -16,5 +16,9 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "node-sass": "^4.9.2",
+    "sass-loader": "^7.1.0"
   }
 }
