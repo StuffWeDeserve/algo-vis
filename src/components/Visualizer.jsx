@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import "./Visualizer.css"
+import "./Visualizer.scss"
 import ListElement from './ListElement';
 import shortid from 'shortid';
 

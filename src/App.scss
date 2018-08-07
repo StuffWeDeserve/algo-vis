@@ -67,7 +67,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: white;
+    background: $tertiary-color;
     overflow: hidden;
 }
 
@@ -84,11 +84,11 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
+    background: $tertiary-color;
 }
 
 .code-mirror {
     width: 80%;
-    background: red;
 }
 
 .CodeMirror {

@@ -58,7 +58,10 @@ class App extends Component {
 
   evaluateCode() {
     this.setState((prevState) => 
-      {return {curr: 0, lst: Generator.generateNList(prevState.lst[0], prevState.value, FUNCTION_NAME), visActive: true}});
+      {return {
+        curr: 0, 
+        lst: Generator.generateNList(prevState.lst[0], prevState.value, FUNCTION_NAME), 
+        visActive: true}});
   }
 
   updateListSize() {
@@ -113,7 +116,6 @@ class App extends Component {
           <div className="instructions">
             <h4>Enter code and run the visualizer</h4>
           </div>
-
           {codeMirror}
           <Button className="run-button btn-large blue" waves='light' onClick={this.evaluateCode}>Run Code</Button>
         </div>
