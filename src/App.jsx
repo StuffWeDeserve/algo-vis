@@ -12,7 +12,7 @@ import 'codemirror/mode/javascript/javascript';
 import 'react-rangeslider/lib/index.css';
 
 // materialize
-import {Footer, Button, Icon, Collection, CollectionItem} from 'react-materialize';
+import {Footer, Button, Icon, Navbar, NavItem} from 'react-materialize';
 import ListConfig from './components/ListConfig';
 
 var arr = [1,2,3,4,5,6,7,8,9,10];
@@ -73,7 +73,13 @@ class App extends Component {
     // the parameters for the codemirror
     var options = {
       lineNumbers: true,
-      mode: 'javascript'};
+      mode: 'javascript',
+      viewportMargin:20,
+      height: '70%'
+    };
+
+    var codeMirror = (<CodeMirror className="code-mirror" style={{"height":"300px"}} defaultValue={DEFAULT_CODE} options={options} 
+    onChange={(event) => {this.setState({value:event})}} />);
 
     const { lst, curr } = this.state
 
@@ -88,34 +94,40 @@ class App extends Component {
         </Button>
       </div>);
 
-    return (
-      <div>
-        <div className="App">
-          <div className="section main-app">
-              <div className="instructions">
-                  <h4>Configure the list size and randomize the list elements</h4>
-              </div>
-              <ListConfig 
-                size={this.state.size} 
-                handleSizeChange={this.handleSizeChange} 
-                updateListSize={this.updateListSize}
-                lst={this.state.lst}
-                listRandomizer={this.listRandomizer} />
+    var sections = (
+      <div className="App">
+        <div className="section main-app">
+            <div className="instructions">
+                <h4>Configure the list size and randomize the list elements</h4>
+            </div>
+            <ListConfig 
+              size={this.state.size} 
+              handleSizeChange={this.handleSizeChange} 
+              updateListSize={this.updateListSize}
+              lst={this.state.lst}
+              listRandomizer={this.listRandomizer} />
+        </div>
+
+        <div className="section code-editor">
+          <div className="instructions">
+            <h4>Enter code and run the visualizer</h4>
           </div>
 
-            <div className="section code-editor">
-              <div className="instructions">
-                <h4>Enter code and run the visualizer</h4>
-              </div>
-
-              <CodeMirror defaultValue={DEFAULT_CODE} options={options} 
-                onChange={(event) => {this.setState({value:event})}} />
-            </div>
-
+          {codeMirror}
           <Button className="blue darken-5" waves='light' onClick={this.evaluateCode}> Run </Button>
-          {this.state.visActive ? visualizer: null}
         </div>
-        <Footer className="footer blue darken-5" copyrights="© Copyright 2018 StuffWeDeserve"> jj </Footer>
+      </div>
+    );
+
+    return (
+      <div className="section-container">
+        <Navbar brand='' className='header teal lighten-2' left>
+          <NavItem className='header-item black-text text-darken-2' right>Stuff We Deserve</NavItem>
+        </Navbar>
+
+        {this.state.visActive ? visualizer: sections}
+        
+        <Footer className="footer blue darken-5" copyrights="© Copyright 2018 StuffWeDeserve"> </Footer>
       </div>
 
     );
