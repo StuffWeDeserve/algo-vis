@@ -87,13 +87,9 @@
     background: $tertiary-color;
 }
 
-.code-mirror {
-    width: 80%;
-}
-
-.CodeMirror {
+.ace-code-editor {
+    width: 80% !important;
     height: 65vh !important;
-    box-shadow: 1px 1px 2px rgb(34, 34, 34);
 }
 
 .header {
