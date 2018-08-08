@@ -159,9 +159,9 @@ class App extends Component {
           </ul>
         }>
 
-          <h5 className="white-text">Stuff We Deserve</h5>
+          <h5 className="white-text">Algorithm Visualizer</h5>
           <p className="grey-text text-lighten-4">
-            You can use rows and columns here to organize your footer content.
+            Visualize any algorithm that manipulates a list. This visualizer DOES NOT compute complexity, each step in the visualizer represents a list manipulation that occured in the main list.
           </p>
         </Footer>
       </div>
