@@ -53,7 +53,7 @@
     }
 }
 
-.slider {
+.algo-slider {
     width: 35% !important;
     font-size: 20pt !important;
     height: auto;
@@ -98,4 +98,8 @@
 
 .header-item {
     color: black !important;
+}
+
+.thumb {
+    display: none;
 }

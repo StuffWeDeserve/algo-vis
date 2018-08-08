@@ -7,18 +7,18 @@ const ALGO_LIST_REVERSE = `function ${FUNCTION_NAME}(lst) \n{\n  `
 + "lst.reverse(); \n}";
 
 const ALGO_BUBBLE_SORT = `function ${FUNCTION_NAME}(lst) \n{\n
-      var swapped;\n
-      do {\n
-          swapped = false;\n
-          for (var i=0; i < lst.length-1; i++) {\n
-              if (lst[i] > lst[i+1]) {\n
-                  var temp = lst[i];\n
-                  lst[i] = lst[i+1];\n
-                  lst[i+1] = temp;\n
-                  swapped = true;\n
-              }\n
-          }\n
-      } while (swapped);\n
+    var swapped;\n
+    do {\n
+        swapped = false;\n
+        for (var i=0; i < lst.length-1; i++) {\n
+            if (lst[i] > lst[i+1]) {\n
+                var temp = lst[i];\n
+                lst[i] = lst[i+1];\n
+                lst[i+1] = temp;\n
+                swapped = true;\n
+            }\n
+        }\n
+    } while (swapped);\n
 \n}`;
 
 const ALGO_SELECTION_SORT = `function ${FUNCTION_NAME}(lst) \n{\n

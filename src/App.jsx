@@ -84,7 +84,7 @@ class App extends Component {
       enableLiveAutocompletion: false,
       enableSnippets: false,
       showLineNumbers: true,
-      tabSize: 2,
+      tabSize: 4,
     };
 
     var aceEditor = (
@@ -107,8 +107,8 @@ class App extends Component {
     var visualizer = (
       <div className="visualizer">
         <Visualizer list={lst[curr]} max={this.state.size}/>
-        <div className="range-field slider">
-          <input type="range" min={0} max={lst.length - 1} value={curr} onChange={(event) => {this.setState({curr: event.target.value})}}/>
+        <div className="range-field algo-slider">
+          <input type="range" min={0} max={lst.length - 1} value={curr} oninput="showVal(this.value)" onChange={(event) => {this.setState({curr: event.target.value})}}/>
         </div>
         <Button className="blue darken-5" waves='light' onClick={this.hideVis}>
           Close
@@ -151,7 +151,19 @@ class App extends Component {
       <div className="section-container">
         <Navbar brand={REPO_NAME} className='header blue-grey darken-4' right />
         {this.state.visActive ? visualizer: sections}
-        <Footer className="footer blue-grey darken-4" copyrights="© Copyright 2018 StuffWeDeserve"> </Footer>
+        <Footer className="footer blue-grey darken-4" copyrights="© Copyright 2018 StuffWeDeserve"
+        links={
+          <ul>
+            <li><a className="grey-text text-lighten-3" href="http://kdecosta.com">Kalindu De Costa</a></li>
+            <li><a className="grey-text text-lighten-3" href="https://sakshaat.github.io/">Sakshaat Choyikandi</a></li>
+          </ul>
+        }>
+
+          <h5 className="white-text">Algorithm Visualizer</h5>
+          <p className="grey-text text-lighten-4">
+            Visualize any algorithm that manipulates a list. This visualizer DOES NOT compute complexity, each step in the visualizer represents a list manipulation that occured in the main list.
+          </p>
+        </Footer>
       </div>
 
     );
