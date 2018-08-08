@@ -30,8 +30,13 @@ var generator = (function(){
         // eslint-disable-next-line
         let arrayProxy = new Proxy(array, handler);
         
-        // eslint-disable-next-line
-        eval(code + ";" + injector+"(arrayProxy);");
+        try {
+            // eslint-disable-next-line 
+            eval(code + ";" + injector+"(arrayProxy);");
+        }
+        catch(err) {
+            throw err;
+        }
 
         return result.slice(0);
     }

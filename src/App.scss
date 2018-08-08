@@ -1,0 +1,105 @@
+@import "colors.scss"; 
+
+.App {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.main-app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    background-color: $primary-color;
+
+    .instructions {
+        width: 100%;
+        color: $tertiary-color;
+    }
+}
+
+.header .brand-logo {
+    color: $light-text-color !important;
+    padding-left: 10px;
+    font-weight: 400;
+}
+
+.run-button {
+    width: 20vw;
+    color: $light-text-color;
+}
+
+
+
+.section {
+    padding: 10px;
+    width: 100%;
+    min-height: 90vh;
+}
+
+.code-editor {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    width: 100%;
+    background-color: $tertiary-color;
+
+    .instructions {
+        width: 100%;
+        color: $primary-color;
+    }
+}
+
+.slider {
+    width: 35% !important;
+    font-size: 20pt !important;
+    height: auto;
+}
+
+.visualizer {
+    transition: visibility 0s, opacity 0.5s linear;
+    width: 100%;
+    height:auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: $tertiary-color;
+    overflow: hidden;
+}
+
+.footer {
+    padding: 0;
+    width: 100%;
+}
+
+.section-container {
+    padding: 0;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    background: $tertiary-color;
+}
+
+.code-mirror {
+    width: 80%;
+}
+
+.CodeMirror {
+    height: 65vh !important;
+    box-shadow: 1px 1px 2px rgb(34, 34, 34);
+}
+
+.header {
+    background: white;
+}
+
+.header-item {
+    color: black !important;
+}
