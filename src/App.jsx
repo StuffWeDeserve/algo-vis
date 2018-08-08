@@ -1,13 +1,15 @@
 import React, { Component } from 'react';
 import Visualizer from './components/Visualizer';
-import CodeMirror from 'react-codemirror';
+import brace from 'brace';
+import AceEditor from 'react-ace';
 import Generator from './lib/generator';
 
-import arrayShuffle from "./lib/utils";
+import 'brace/mode/java';
+import 'brace/theme/tomorrow';
+
+import {arrayShuffle, ALGO_LIST_REVERSE, ALGO_BUBBLE_SORT, ALGO_QUICK_SORT, ALGO_SELECTION_SORT, DEFAULT_CODE} from "./lib/utils";
 
 import './App.scss';
-import 'codemirror/lib/codemirror.css';
-import 'codemirror/mode/javascript/javascript';
 
 import 'react-rangeslider/lib/index.css';
 
@@ -23,11 +25,6 @@ const FUNCTION_NAME = "visualizer";
 const REPO_NAME = "Algo-Vis"
 
 // Default code added into the code mirror plugin
-const DEFAULT_CODE = `function ${FUNCTION_NAME}(lst) \n{\n  //`
-  + "Start typing here, do not delete the function declaration \n}";
-
-const ALGO_LIST_REVERSE = `function ${FUNCTION_NAME}(lst) \n{\n  `
-+ "lst.reverse(); \n}";
 
 class App extends Component {
   constructor() {
@@ -83,16 +80,29 @@ class App extends Component {
   render() {
     // the parameters for the codemirror
     var options = {
-      lineNumbers: true,
-      mode: 'javascript',
-      viewportMargin:20,
-      height: '70%'
+      enableBasicAutocompletion: false,
+      enableLiveAutocompletion: false,
+      enableSnippets: false,
+      showLineNumbers: true,
+      tabSize: 2,
     };
 
-    var codeMirror = (<CodeMirror className="code-mirror" style={{"height":"300px"}} defaultValue={this.state.value} options={options} 
-    onChange={(event) => {this.setState({value:event})}} />);
-
-    const { lst, curr } = this.state
+    var aceEditor = (
+      <AceEditor
+        className="ace-code-editor" 
+        mode="javascript"
+        theme="tomorrow"
+        name="Code Editor"
+        onLoad={this.onLoad}
+        onChange={(event) => {this.setState({value:event})}}
+        fontSize={14}
+        showPrintMargin={true}
+        showGutter={true}
+        highlightActiveLine={true}
+        value={this.state.value}
+        setOptions={options}/>
+    );
+    const { lst, curr } = this.state;
 
     var visualizer = (
       <div className="visualizer">
@@ -126,9 +136,12 @@ class App extends Component {
           <Dropdown trigger={
               <Button className="btn-large blue">Test Algorithms<Icon right>arrow_drop_down</Icon></Button>
             }>
-            <NavItem href="#section-code-editor" onClick={(event) => {this.setState({value:ALGO_LIST_REVERSE})}}>List reverse</NavItem>
+            <NavItem onClick={() => {this.setState({value:ALGO_LIST_REVERSE})}}>List reverse</NavItem>
+            <NavItem onClick={() => {this.setState({value:ALGO_BUBBLE_SORT})}}>Bubble Sort</NavItem>
+            <NavItem onClick={() => {this.setState({value:ALGO_SELECTION_SORT})}}>Selection Sort</NavItem>
+            <NavItem onClick={() => {this.setState({value:ALGO_QUICK_SORT})}}>Quick Sort</NavItem>
           </Dropdown>
-          {codeMirror}
+          {aceEditor}
           <Button className="run-button btn-large blue" waves='light' onClick={this.evaluateCode}>Run Code</Button>
         </div>
       </div>
