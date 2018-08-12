@@ -22,7 +22,7 @@ arrayShuffle(arr);
 
 const INITIAL_LIST = arr;
 const FUNCTION_NAME = "visualizer";
-const REPO_NAME = "Algo-Vis"
+const REPO_NAME = "List Visualizer"
 
 // Default code added into the code mirror plugin
 
@@ -159,7 +159,7 @@ class App extends Component {
           </ul>
         }>
 
-          <h5 className="white-text">Algorithm Visualizer</h5>
+          <h5 className="white-text">List Visualizer</h5>
           <p className="grey-text text-lighten-4">
             Visualize any algorithm that manipulates a list. 
             This visualizer DOES NOT compute complexity,
