@@ -9,7 +9,6 @@ class ListElement extends Component {
         <div className="list-container">
           <div className="list-element" style={{height: `${(this.props.i / this.props.n) * 100}%`}} />
         </div>
-        <div className="list-element-label">{this.props.i}</div>
       </div>
 
 

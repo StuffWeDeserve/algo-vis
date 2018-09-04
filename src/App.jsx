@@ -7,22 +7,25 @@ import Generator from './lib/generator';
 import 'brace/mode/java';
 import 'brace/theme/tomorrow';
 
-import {arrayShuffle, ALGO_LIST_REVERSE, ALGO_BUBBLE_SORT, ALGO_QUICK_SORT, ALGO_SELECTION_SORT, DEFAULT_CODE} from "./lib/utils";
 
 import './App.scss';
-
 import 'react-rangeslider/lib/index.css';
+
+// util functions
+import {generateNumList, arrayShuffle} from "./lib/utils";
+
+// Algorithms
+import {FUNCTION_NAME, ALGO_LIST_REVERSE, ALGO_BUBBLE_SORT, ALGO_QUICK_SORT, 
+  ALGO_SELECTION_SORT, DEFAULT_CODE} from "./lib/algorithms"
 
 // materialize
 import {Footer, Button, Icon, Navbar, NavItem, Toast, Dropdown} from 'react-materialize';
 import ListConfig from './components/ListConfig';
 
-var arr = [1,2,3,4,5,6,7,8,9,10];
-arrayShuffle(arr);
-
-const INITIAL_LIST = arr;
-const FUNCTION_NAME = "visualizer";
+let LIST_SIZE = 100;
 const REPO_NAME = "List Visualizer"
+
+var initial_arr = generateNumList(LIST_SIZE);
 
 // Default code added into the code mirror plugin
 
@@ -30,10 +33,10 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      lst : [INITIAL_LIST],
+      lst : [initial_arr],
       curr : 0,
       value: DEFAULT_CODE,
-      size : INITIAL_LIST.length,
+      size : initial_arr.length,
       visActive: false
     }
 
@@ -149,15 +152,14 @@ class App extends Component {
 
     return (
       <div className="section-container">
-        <Navbar brand={REPO_NAME} className='header blue-grey darken-4' right />
+        <Navbar brand={REPO_NAME} className='header' right />
         {this.state.visActive ? visualizer: sections}
         <Footer className="footer blue-grey darken-4" copyrights="© Copyright 2018 StuffWeDeserve"
-        links={
-          <ul>
-            <li><a className="grey-text text-lighten-3" href="http://kdecosta.com"><i class="fab fa-github"></i> Kalindu De Costa</a></li>
-            <li><a className="grey-text text-lighten-3" href="https://sakshaat.github.io/"><i class="fab fa-github"></i> Sakshaat Choyikandi</a></li>
-          </ul>
-        }>
+          links={
+            <ul>
+              <li><a className="grey-text text-lighten-3" href="http://kdecosta.com"><i class="fab fa-github"></i> Kalindu De Costa</a></li>
+              <li><a className="grey-text text-lighten-3" href="https://sakshaat.github.io/"><i class="fab fa-github"></i> Sakshaat Choyikandi</a></li>
+            </ul>}>
 
           <h5 className="white-text">List Visualizer</h5>
           <p className="grey-text text-lighten-4">
