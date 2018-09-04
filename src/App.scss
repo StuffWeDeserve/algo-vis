@@ -8,6 +8,10 @@
     justify-content: space-around;
 }
 
+.header {
+    background-color: $tertiary-color !important;
+}
+
 .main-app {
     display: flex;
     flex-direction: column;
@@ -22,7 +26,7 @@
 }
 
 .header .brand-logo {
-    color: $light-text-color !important;
+    color: $primary-color !important;
     padding-left: 10px;
     font-weight: 400;
 }
@@ -67,7 +71,7 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: $tertiary-color;
+    background: $primary-color;
     overflow: hidden;
 }
 
@@ -84,7 +88,7 @@
     flex-direction: column;
     justify-content: space-between;
     align-items: center;
-    background: $tertiary-color;
+    background: $primary-color;
 }
 
 .ace-code-editor {
