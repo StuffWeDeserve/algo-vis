@@ -10,7 +10,7 @@ class ListConfig extends Component {
   
   render() {
     return (
-        <Card className="appConfig white">
+        <Card className="app-config white">
           <section className="content">
             <label>
               List Elements:

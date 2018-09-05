@@ -8,8 +8,15 @@
     justify-content: space-around;
 }
 
-.header {
+.nav-wrapper {
     background-color: $tertiary-color !important;
+    padding-left: 10px; 
+
+    .brand-logo {
+        color: $primary-color !important;
+        padding-left: 10px;
+        font-weight: 400;
+    }
 }
 
 .main-app {
@@ -25,14 +32,7 @@
     }
 }
 
-.header .brand-logo {
-    color: $primary-color !important;
-    padding-left: 10px;
-    font-weight: 400;
-}
-
 .run-button {
-    width: 20vw;
     color: $light-text-color;
 }
 
@@ -59,9 +59,17 @@
 
 .algo-slider {
     width: 35% !important;
-    font-size: 20pt !important;
     height: auto;
-}
+
+    input {
+        border: none;
+
+        &:focus {
+            outline: none;
+        }
+    }
+    
+} 
 
 .visualizer {
     transition: visibility 0s, opacity 0.5s linear;
@@ -73,6 +81,7 @@
     align-items: center;
     background: $primary-color;
     overflow: hidden;
+    margin-top: 25px;
 }
 
 .footer {
@@ -106,4 +115,16 @@
 
 .thumb {
     display: none;
+}
+
+
+@media only screen and (max-width: 600px) {
+    .ace-code-editor {
+        font-size: 12pt !important;
+        width: 100% !important;
+    }
+
+    .instructions h4 {
+        font-size: 20pt;
+    }
 }
