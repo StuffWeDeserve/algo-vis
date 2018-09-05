@@ -87,7 +87,7 @@ class App extends Component {
       enableLiveAutocompletion: false,
       enableSnippets: false,
       showLineNumbers: true,
-      tabSize: 4,
+      tabSize: 4
     };
 
     var aceEditor = (
@@ -103,6 +103,7 @@ class App extends Component {
         showGutter={true}
         highlightActiveLine={true}
         value={this.state.value}
+        wrapEnabled={true}
         setOptions={options}/>
     );
     const { lst, curr } = this.state;
@@ -152,7 +153,11 @@ class App extends Component {
 
     return (
       <div className="section-container">
-        <Navbar brand={REPO_NAME} className='header' right />
+        <nav>
+          <div class="nav-wrapper">
+            <a href="#" class="brand-logo">{REPO_NAME}</a>
+          </div>
+        </nav>
         {this.state.visActive ? visualizer: sections}
         <Footer className="footer blue-grey darken-4" copyrights="© Copyright 2018 StuffWeDeserve"
           links={
@@ -160,7 +165,6 @@ class App extends Component {
               <li><a className="grey-text text-lighten-3" href="http://kdecosta.com"><i class="fab fa-github"></i> Kalindu De Costa</a></li>
               <li><a className="grey-text text-lighten-3" href="https://sakshaat.github.io/"><i class="fab fa-github"></i> Sakshaat Choyikandi</a></li>
             </ul>}>
-
           <h5 className="white-text">List Visualizer</h5>
           <p className="grey-text text-lighten-4">
             Visualize any algorithm that manipulates a list. 
@@ -172,7 +176,7 @@ class App extends Component {
       </div>
 
     );
-  }
+  }  
 }
 
 export default App;

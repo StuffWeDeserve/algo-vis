@@ -1,11 +1,13 @@
-.appConfig {
+@import "../colors.scss"; 
+
+.app-config {
     width: 80%;
     height: 70vh;
     padding: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;  
+    align-items: center;
 }
 .content {
     max-width: 100%;
@@ -26,15 +28,15 @@
     flex-wrap: wrap;
     justify-content: center;
     margin: 5px;
-    padding: 5px;
-    padding-left: 5px;
-    
+    padding: 8px;
+    font-size: 16pt;
+    background-color: $light-text-color; 
 }
 
 .listValuesItem {
     margin-left: 10px;
     margin-right: 10px;
-    font-size: 16pt;
+    font-style: italic;
 }
 
 .btn {
@@ -50,5 +52,15 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
 }
 
+@media only screen and (max-width: 600px) {
+    .list-view {
+        max-height: 20vh;
+    }
+
+    .listValues {
+        font-size: 11pt;
+    }
+}
