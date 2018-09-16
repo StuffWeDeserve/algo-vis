@@ -23,7 +23,7 @@ import {Footer, Button, Icon, Navbar, NavItem, Toast, Dropdown} from 'react-mate
 import ListConfig from './components/ListConfig';
 
 let LIST_SIZE = 100;
-const REPO_NAME = "List Visualizer"
+const REPO_NAME = "AlgoVis"
 
 var initial_arr = generateNumList(LIST_SIZE);
 
@@ -135,7 +135,8 @@ class App extends Component {
 
         <div className="section code-editor" id="section-code-editor">
           <div className="instructions">
-            <h4>Enter code and run the visualizer</h4>
+            <h4>Enter code and run the visualizer. </h4>
+            <h5><i>Note: Assignments to the lst variable do not currently work.</i></h5>
           </div>
           <Dropdown trigger={
               <Button className="btn-large blue">Test Algorithms<Icon right>arrow_drop_down</Icon></Button>
