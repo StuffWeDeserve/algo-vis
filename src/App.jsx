@@ -166,7 +166,7 @@ class App extends Component {
               <li><a className="grey-text text-lighten-3" href="http://kdecosta.com"><i class="fab fa-github"></i> Kalindu De Costa</a></li>
               <li><a className="grey-text text-lighten-3" href="https://sakshaat.github.io/"><i class="fab fa-github"></i> Sakshaat Choyikandi</a></li>
             </ul>}>
-          <h5 className="white-text">List Visualizer</h5>
+          <h5 className="white-text">AlgoVis - List Visualizer</h5>
           <p className="grey-text text-lighten-4">
             Visualize any algorithm that manipulates a list. 
             This visualizer DOES NOT compute complexity,
